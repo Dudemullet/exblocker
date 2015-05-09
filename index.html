@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<title>Document</title>
+</head>
+<body>
+	<div class="picture-container">
+		<img id="picture" src="images/images.jpg">
+		
+	</div>
+
+	<a id="try-it" href="#">try</a>
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="facedetection/jquery.facedetection.js"></script> 
+    <script>
+     $('#picture').faceDetection({
+        complete: function (faces) {
+            console.log(faces);
+            for (var i = 0; i < faces.length; i++) {
+                            $('<div>', {
+                                'class':'face',
+                                'css': {
+                                    'position': 'absolute',
+                                    'left':     faces[i].x * faces[i].scaleX + 'px',
+                                    'top':      faces[i].y * faces[i].scaleY + 'px',
+                                    'width':    faces[i].width  * faces[i].scaleX + 'px',
+                                    'height':   faces[i].height * faces[i].scaleY + 'px'
+                                }
+                            })
+                            .insertAfter(this);
+                        }
+        }
+    });
+    </script>
+    </body>
+	
+	    
+</html>
